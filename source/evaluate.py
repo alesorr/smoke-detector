@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import os, sys, csv, argparse
 import numpy as np
 from sklearn.metrics import accuracy_score, balanced_accuracy_score
