@@ -22,6 +22,12 @@ if __name__ == "__main__":
     config.print_all()
 
     img_loader = library.ImageLoader()
-    print("INFO >> Init software...")
+    '''
+    Nel caso in cui non dovesse caricare correttamente le immagini a causa del file .DS_Store, eseguire il comando seguente
+
+        find . -name "*.DS_Store" -type f -delete
+
+    nella directory dataset/train
+    '''
     img_loader.load_from_dir()
     

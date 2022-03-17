@@ -5,7 +5,10 @@ import sys
 
 # insert at 1, 0 is the script path (or '' in REPL)
 sys.path.insert(1, '/Users/alex/Desktop/smoke-detector/source')
-import detector    
+import detector  
+
+sys.path.insert(2, '/Users/alex/Desktop/smoke-detector/source/utils/')
+import library
 
 ''' 
     UTILS --> This Classes need to show progress bar while testing
@@ -74,6 +77,8 @@ class Testing(unittest.TestCase):
         self.text = "INFO >> Start..."
         self.a = "some"
         self.b = "some"
+        self.img_count = 1166645
+        self.img_loader = library.ImageLoader()
 
     def test_string(self):
         """
@@ -92,7 +97,16 @@ class Testing(unittest.TestCase):
             self.assertEqual(self.text, detector.main())
         except:  
             raise Exception()
-                        
+    
+    def test_load_from_dir(self):
+        """
+        Any method which starts with ``test_`` will considered as a test case.
+        """
+        try:
+            self.assertEqual(self.img_count, self.img_loader.load_from_dir())
+        except:
+            raise Exception()
+
 
 
 
@@ -106,7 +120,7 @@ def get_tests():
     """
     This function return a list of all the use case method's names 
     """
-    test_funcs = ['test_string', 'test_default_text']
+    test_funcs = ['test_string', 'test_default_text', 'test_load_from_dir']
     return [Testing(func) for func in test_funcs]
 
 if __name__ == '__main__':
